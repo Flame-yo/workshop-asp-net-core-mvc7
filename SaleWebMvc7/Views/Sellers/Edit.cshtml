@@ -1,8 +1,8 @@
 ﻿@model SalesWebMvc7.Models.ViewModels.SellerFormViewModel
 
 @{ 
-    ViewData["Title"] = "Create";
-} 
+    ViewData["Title"] = "Edit";
+}
 
 <h2>@ViewData["Title"]</h2>
 
@@ -10,7 +10,8 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="Edit">
+            <input type="hidden" asp-for="Seller.Id" />
             <div asp-validation-summary="All" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Seller.Name" class="control-label"></label>
@@ -30,19 +31,19 @@
             <div class="form-group">
                 <label asp-for="Seller.BaseSalary" class="control-label"></label>
                 <input asp-for="Seller.BaseSalary" class="form-control" />
-                <span asp-validation-for="Seller.BaseSalary" class="text-danger"></span>
+                <span asp-validation-for="Seller.BaseSalary"  class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Seller.DepartmentId" class="control-lable"></label>
-                <select asp-for="Seller.DepartmentId" asp-items="@(new SelectList(Model.Departments, "Id", "Name"))" class="form-control"></select>
+                <label asp-for="Seller.DepartmentId" class="control-label"></label>
+                <select asp-for="Seller.DepartmentId" asp-items="@(new SelectList(Model.Departments, "Id", "Name"))"  class="form-control"></select>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </form>
     </div>
 </div>
 
-@section Scripts{ 
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+@section Scripts { 
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
